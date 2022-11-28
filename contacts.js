@@ -3,6 +3,10 @@ const path = require('path');
 
 const contactsPath = path.join('./db', 'contacts.json');
 
+/**
+ *function to read file and parse data
+ * @return {array} contact list
+ */
 const getListContacts = async () => {
   try {
     const data = await fs.readFile(contactsPath, 'utf-8');
@@ -13,6 +17,10 @@ const getListContacts = async () => {
   }
 };
 
+/**
+ *function to get contact list and console it
+ */
+
 const listContacts = async () => {
   try {
     const list = await getListContacts();
@@ -22,6 +30,10 @@ const listContacts = async () => {
   }
 };
 
+/**
+ *function to get contact by id and console it
+ * @param {string} contactId - contact`s id to search
+ */
 const getContactById = async contactId => {
   try {
     const list = await getListContacts();
@@ -34,6 +46,10 @@ const getContactById = async contactId => {
   }
 };
 
+/**
+ *function to delete contact and console updated contact list
+ * @param {string} contactId - contact`s id to delete
+ */
 const removeContact = async contactId => {
   try {
     const list = await getListContacts();
@@ -46,6 +62,12 @@ const removeContact = async contactId => {
   }
 };
 
+/**
+ *function to add new contact and console updated contact list
+ * @param {string} name - new contact`s name
+ * @param {string} email - new contact`s email
+ * @param {string} phone - new contact`s phone
+ */
 const addContact = async (name, email, phone) => {
   try {
     const list = await getListContacts();
